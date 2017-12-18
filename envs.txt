@@ -1,0 +1,4 @@
+export BOT_TOKEN='498542655:AAF1caHo_30uS1kB0oKdaAMTm1-fIfB8nE0'
+export DATABASE_URI='sqlite:///catalog.sqlite'
+export USERNAME='username'
+export PASSWORD='password'
