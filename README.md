@@ -1,19 +1,43 @@
-# Telegram Bot for Pizzeria
+# Telegram-бот для пиццерии
 
-[TODO. There will be project description]
+Данный telegram-бот предназначен для вывода в чат меню пиццерии. Также есть возможность изменять каталог меню в админке.
 
-# How to Use
+# Как использовать
 
-Step 1. Register new telegram bot for development purposes, get the new token. [@BotFather](https://telegram.me/botfather)
+Шаг 1. Зарегистрировать нового telegram-бота для разработки и получить новый токен. [@BotFather](https://telegram.me/botfather)
 
-Step 2. Launch
+Шаг 2. Открыть файл "envs.txt", изменить значения токена, URI базы данных, имени пользователя и пароль для доступа к админке.
 
+Шаг 3. Установить параметры окружения, введя в консоли
 ```
-#!bash
-
-$ # the token below is not actual, you need to register a new one
-$ BOT_TOKEN="110831855:AAE_GbIeVAUwk11O12vq4UeMnl20iADUtM" python3 bot.py
+source envs.txt
 ```
-# Project Goals
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+Шаг 4. Создать базу данных с структурой таблиц
+```
+python3 create_db.py
+```
+После этого будет создан файл с базой данных.
+
+Шаг 5. Осуществить первичную загрузку данных каталога из json-файла в базу данных
+```
+python3 load_data_from_json.py имя_json_файла
+```
+Пример json-файла для загрузки: [файл catalog.json](https://download.ru/files/HsQAArSK)
+
+Шаг 6. Запустить скрипт для работы админки, в которой возможно изменение, добавление или удаление элементов каталога пиццерии. 
+```
+python3 server.py
+```
+Админка будет доступна по [ссылке](http://localhost:5000/admin/). Для работы необходимо ввести имя пользователя и пароль. 
+
+Шаг 7. Для работы telegram-бота необходимо открыть параллельно второе окно консоли, ввести в нём следующие команды:
+```
+source envs.txt
+python3 bot.py
+```
+После этого созданный на первом шаге бот будет полноценно работать. Для начала работы с ботом отправьте ему сообщение "/start".
+
+# Цели проекта
+
+Код написан в учебных целях. Обучающие курсы для веб-разработчиков - [DEVMAN.org](https://devman.org)
