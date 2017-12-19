@@ -18,10 +18,12 @@ db = SQLAlchemy(app)
 
 class ModelView(sqla.ModelView):
     def is_accessible(self):
+        unauthorized_status_code = 401
         auth = request.authorization
         if not auth or (auth.username, auth.password) != (getenv('USERNAME'), getenv('PASSWORD')):
             raise HTTPException('', Response(
-                "Введите корректные имя пользователя и пароль!", 401,
+                "Введите корректные имя пользователя и пароль!",
+                unauthorized_status_code,
                 {'WWW-Authenticate': 'Basic realm="Login Required"'}
             ))
         return True
