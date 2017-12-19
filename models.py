@@ -32,5 +32,9 @@ class Choice(Base):
 
 class DepartmentEmployeeLink(Base):
     __tablename__ = 'pizza_link'
-    pizza_id = Column(Integer, ForeignKey('pizza.identifier'), primary_key=True)
-    choice_id = Column(Integer, ForeignKey('choice.identifier'), primary_key=True)
+    pizza_id = Column(Integer,
+                      ForeignKey('pizza.identifier'),
+                      primary_key=True)
+    choice_id = Column(Integer,
+                       ForeignKey('choice.identifier'),
+                       primary_key=True)
