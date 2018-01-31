@@ -3,6 +3,7 @@ from jinja2 import Template
 from os import getenv
 from server import db
 from models import Pizza
+from sqlalchemy.orm import joinedload
 
 
 TOKEN = getenv('BOT_TOKEN')
@@ -25,7 +26,7 @@ def greet(message):
 
 @bot.message_handler(commands=['menu'])
 def show_catalog(message):
-    catalog = db.session.query(Pizza).all()
+    catalog = db.session.query(Pizza).options(joinedload(Pizza.choices)).all()
     bot.send_message(message.chat.id,
                      catalog_tmpl.render(catalog=catalog),
                      parse_mode='Markdown')
