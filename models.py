@@ -30,7 +30,7 @@ class Choice(Base):
         return "%s - %sруб." % (self.title, self.price)
 
 
-class DepartmentEmployeeLink(Base):
+class PizzaChoiceLink(Base):
     __tablename__ = 'pizza_link'
     pizza_id = Column(Integer,
                       ForeignKey('pizza.identifier'),
